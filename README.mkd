@@ -1,0 +1,53 @@
+vim-AsyncMakeGreen
+=========================
+
+AsyncMakeGreen is the conceptual marrying of [AsyncCommand](https://github.com/pydave/AsyncCommand) and [makegreen.vim](https://github.com/reinh/vim-makegreen). It provides the means to run `makeprg` asynchronously, and once the command finishes, display a green bar on success or a red bar on error, jumping to the line of failure.
+
+Installation
+------------
+
+Extract files to your ~/.vim directory or use Time Pope's [pathogen.vim](https://github.com/tpope/vim-pathogen).
+
+Requirements
+------------
+
+- Vim 7.0+ compiled with `+clientserver`
+- [AsyncCommand](https://github.com/pydave/AsyncCommand)
+- [red-green.vim](https://github.com/jimf/vim-red-green/)
+
+Usage
+-----
+
+AsyncMakeGreen adds 1 new command to AsyncCommand:
+
+### *AsyncMakeGreen* ###
+> run make against a target and display a green bar on success or a red bar on failure, jumping to the line
+
+Example:
+
+    function! MakeTest(target)
+        if filereadable('./Makefile')
+            silent ! echo
+            exec "set makeprg=make\\ NOSE='bin/nosetests\\ --no-color\\ --machine-out'"
+            set errorformat=%f:%l:\ fail:\ %m
+            exec "AsyncMakeGreen " . a:target
+        endif
+    endfunction
+
+    au BufWritePost * if &filetype == "python" | call MakeTest('unit-test') | endif
+
+Configuration
+-------------
+
+The behavior of this plugin can be tweaked by modifying the following variables:
+
+    let g:async_make_green_success_prefix = ' ✓ '
+    let g:async_make_green_failure_prefix = ' ✖ '
+    let g:async_make_green_default_success_text = 'All tests passed'
+
+To modify the bar colors, see the [red-green.vim README](https://github.com/jimf/vim-red-green/blob/master/README.mkd)
+
+License
+-------
+
+[MIT License](http://www.opensource.org/licenses/mit-license.html)

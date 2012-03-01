@@ -47,6 +47,8 @@ The behavior of this plugin can be tweaked by modifying the following variables:
 
 To modify the bar colors, see the [red-green.vim README](https://github.com/jimf/vim-red-green/blob/master/README.mkd)
 
+Additionally, see `:help switchbuf` to customize the way the splits from this plugin behave.
+
 License
 -------
 

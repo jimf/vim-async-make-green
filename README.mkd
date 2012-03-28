@@ -44,6 +44,7 @@ The behavior of this plugin can be tweaked by modifying the following variables:
     let g:async_make_green_success_prefix = ' ✓ '
     let g:async_make_green_failure_prefix = ' ✖ '
     let g:async_make_green_default_success_text = 'All tests passed'
+    let g:async_make_green_use_make_output_on_success = 0
 
 To modify the bar colors, see the [red-green.vim README](https://github.com/jimf/vim-red-green/blob/master/README.mkd)
 

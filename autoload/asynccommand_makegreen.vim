@@ -22,6 +22,16 @@ function! asynccommand_makegreen#first_error()
         exec ":sbuffer " . error['bufnr']
         call RedBar(error_message)
     else
-        call GreenBar(g:async_make_green_success_prefix . g:async_make_green_default_success_text)
+        let message = g:async_make_green_success_prefix
+        if g:async_make_green_use_make_output_on_success
+            if getqflist()[-1]['text']
+                let message = message . getqflist()[-1]['text']
+            else
+                let message = message . g:async_make_green_default_success_text
+            endif
+        else
+            let message = message . g:async_make_green_default_success_text
+        endif
+        call GreenBar(message)
     endif
 endfunction

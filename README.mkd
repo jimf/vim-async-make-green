@@ -6,7 +6,7 @@ AsyncMakeGreen is the conceptual marrying of [AsyncCommand](https://github.com/p
 Installation
 ------------
 
-Extract files to your ~/.vim directory or use Time Pope's [pathogen.vim](https://github.com/tpope/vim-pathogen).
+Extract files to your ~/.vim directory or use Tim Pope's [pathogen.vim](https://github.com/tpope/vim-pathogen).
 
 Requirements
 ------------
